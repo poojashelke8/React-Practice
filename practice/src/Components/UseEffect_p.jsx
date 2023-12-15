@@ -11,6 +11,19 @@ const UseEffect_p = () => {
     //     },100)
     // },[])
 
+    const [time, setTime] = useState(0);
+    
+  useEffect(() => {
+    let interval = setInterval(() => setTime(1), 1000); 
+
+    return () => {
+      // setInterval cleared when component unmounts
+      document.title = "UseEffect"
+      clearInterval(interval);
+    }
+  }, []);
+
+
     useEffect(()=>{
         setCalculation(()=>(count*2))
     },[count])
